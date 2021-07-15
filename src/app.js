@@ -7,6 +7,9 @@ const forecast = require('./utils/forecast');
 const { DH_UNABLE_TO_CHECK_GENERATOR } = require('constants');
 
 const app = express()
+const port = process.env.PORT || 3000
+
+//Define path for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
 const templatesPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
@@ -87,6 +90,6 @@ app.get('*', (req, res)=>{
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}.`)
 })

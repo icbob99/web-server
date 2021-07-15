@@ -1,7 +1,7 @@
 
 function fecthWeather(location){
     
-    fetch(`http://localhost:3000/weather?address=${location}`).then((response)=>{
+    fetch(`/weather?address=${location}`).then((response)=>{
         response.json().then((data={})=>{
      
             const message1 = document.querySelector('#message-1')            
