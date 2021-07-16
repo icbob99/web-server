@@ -10,13 +10,13 @@ const forecast = ( latitude, longitude, callback) =>{
         json: true
     }
 
-    request(params, (error, response) => {
+    request(params, (error, response, body) => {
         if (error) {
             callback('Unable to connect to weather service!', undefined)
-        } else if (response.body.error) {
+        } else if (body.error) {
             callback('Unable to find location', undefined)
         } else {
-            callback(undefined, `It is ${response.body.current.weather_descriptions[0]} in ${response.body.location.name} of ${response.body.location.country}. It is currently ${response.body.current.temperature} degress out. There is a ${response.body.current.precip} % chance of rain.`)   
+            callback(undefined, `It is ${body.current.weather_descriptions[0]} in ${body.location.name} of ${body.location.country}. It is currently ${body.current.temperature} degress out. There is a ${body.current.precip} % chance of rain. And the humidity is ${body.current.humidity}`)   
         }
     })
 } 
